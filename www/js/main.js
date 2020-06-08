@@ -25,6 +25,7 @@
     if(page.matches('#top-page')){
       page.querySelector('#btn').onclick = function() {
         document.querySelector('#navigator').pushPage('slide.html');
+        
       };
 
     }else if(page.matches('#slide-page')){
@@ -60,6 +61,8 @@
           return;
         }
         document.querySelector('#navigator').pushPage('last.html');
+        // console.log(document.querySelector('#navigator').getPages());
+
       };
 
     }else if(page.matches('#last-page')){
