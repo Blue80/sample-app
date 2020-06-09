@@ -14,21 +14,49 @@
         {img: "image/pic06.png", name: "画像6"},
         {img: "image/pic07.png", name: "画像7"},
       ];
+      
+    document.addEventListener('init', (event) => {
+        let page = event.target;
+        
+        
+      if(page.matches('#top-page')){
+        console.log(colors);
+        const images = document.querySelector('.images');
+        colors.forEach((color) => {
+          const li = document.createElement('li');
+          const img = document.createElement('img');
+          const p = document.createElement('p');
+          img.src = color.img;
+          p.textContent = color.name;
+          li.appendChild(img);
+          console.log(img);
+          li.appendChild(p);
+          console.log(p);
+          images.appendChild(li);
+          console.log(li);
+        });
+        console.log(images);
 
-  document.addEventListener("DOMContentLoaded", (event) => {
-    const main = document.getElementById('main');
-  });
-
-  document.addEventListener('init', () => {
-    let page = event.target;
-
-    if(page.matches('#top-page')){
       page.querySelector('#btn').onclick = function() {
         document.querySelector('#navigator').pushPage('slide.html');
-        
+        currentIndex = 0;
+        tapCount = 0;
+        lists.splice(0);
+        selectNames.splice(0);
       };
 
+      page.querySelector('#add').onclick = function() {
+        document.querySelector('#navigator').pushPage('add.html');
+      };
+
+    }else if(page.matches('#add-page')){
+      page.querySelector('#plus').onclick = function() {
+        document.querySelector('#navigator').pushPage('top.html');
+      };
+
+
     }else if(page.matches('#slide-page')){
+      const main = document.getElementById('main');
       main.src = shuffleimages[currentIndex].img;
       play();
       if(currentIndex == shuffleimages.length - 1){
@@ -41,8 +69,6 @@
       page.querySelector('#reset').onclick = function() {
         tapCount = 0;
         document.getElementById('check').classList.add('cannot');
-        // console.log(lists);
-        // console.log(selectNames);
         lists.forEach((list, index) => {
           const elLi = list.elem;
           elLi.textContent = selectNames[index].name; 
@@ -52,8 +78,8 @@
         lists.splice(0);
         selectNames.splice(0);
 
-        console.log(lists);
-        console.log(selectNames);
+        // console.log(lists);
+        // console.log(selectNames);
       }
 
       page.querySelector('#check').onclick = function() {
@@ -61,8 +87,6 @@
           return;
         }
         document.querySelector('#navigator').pushPage('last.html');
-        // console.log(document.querySelector('#navigator').getPages());
-
       };
 
     }else if(page.matches('#last-page')){
@@ -161,7 +185,7 @@
         li.textContent = tapCount;
         lists.push({elem: li, tap: tapCount});
         selectNames.push({name: color.name, tap: tapCount});
-        console.log(selectNames);
+        // console.log(selectNames);
         if(tapCount === colors.length){
           document.getElementById('check').classList.remove('cannot');
         }
