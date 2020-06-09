@@ -15,27 +15,33 @@
         {img: "image/pic07.png", name: "画像7"},
       ];
       
-    document.addEventListener('init', (event) => {
-        let page = event.target;
+  document.addEventListener('init', (event) => {
+    let page = event.target;
+    const images = document.querySelector('.images');    
         
-        
-      if(page.matches('#top-page')){
-        console.log(colors);
-        const images = document.querySelector('.images');
-        colors.forEach((color) => {
-          const li = document.createElement('li');
-          const img = document.createElement('img');
-          const p = document.createElement('p');
-          img.src = color.img;
-          p.textContent = color.name;
-          li.appendChild(img);
-          console.log(img);
-          li.appendChild(p);
-          console.log(p);
-          images.appendChild(li);
-          console.log(li);
-        });
-        console.log(images);
+    if(page.matches('#top-page')){
+      
+      if(images.hasChildNodes()){
+        images.textContent = null;
+      };
+
+      console.log(colors);
+      colors.forEach((color) => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        const p = document.createElement('p');
+        img.src = color.img;
+        p.textContent = color.name;
+        li.appendChild(img);
+        console.log(img);        
+        li.appendChild(p);
+        console.log(p);
+        images.appendChild(li);
+        console.log(li);
+      });
+      // console.log(images);
+      console.log(document.querySelector('.images-container'));
+      
 
       page.querySelector('#btn').onclick = function() {
         document.querySelector('#navigator').pushPage('slide.html');
@@ -77,9 +83,6 @@
         });
         lists.splice(0);
         selectNames.splice(0);
-
-        // console.log(lists);
-        // console.log(selectNames);
       }
 
       page.querySelector('#check').onclick = function() {
@@ -130,6 +133,7 @@
 
       page.querySelector('#last').onclick = function() {
         document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
+        
       };
 
     }  
@@ -185,7 +189,6 @@
         li.textContent = tapCount;
         lists.push({elem: li, tap: tapCount});
         selectNames.push({name: color.name, tap: tapCount});
-        // console.log(selectNames);
         if(tapCount === colors.length){
           document.getElementById('check').classList.remove('cannot');
         }
