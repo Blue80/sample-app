@@ -4,18 +4,23 @@
   let currentIndex = 0;
   let tapCount = 0;
   let t; //画像の切り替え時間
+ 
 
-    let colors = [
-        {img: 'image/pic00.png', name: "画像0"},
-        {img: "image/pic01.png", name: "画像1"},
-        {img: "image/pic02.png", name: "画像2"},
-        {img: "image/pic03.png", name: "画像3"},
-        {img: "image/pic04.png", name: "画像4"},
-        {img: "image/pic05.png", name: "画像5"},
-        {img: "image/pic06.png", name: "画像6"},
-        {img: "image/pic07.png", name: "画像7"},
-      ];
+  let colors = [
+      {img: 'image/pic00.png', name: "画像0"},
+      {img: "image/pic01.png", name: "画像1"},
+      {img: "image/pic02.png", name: "画像2"},
+      {img: "image/pic03.png", name: "画像3"},
+      {img: "image/pic04.png", name: "画像4"},
+      {img: "image/pic05.png", name: "画像5"},
+      {img: "image/pic06.png", name: "画像6"},
+      {img: "image/pic07.png", name: "画像7"},
+    ];
   
+  
+  
+
+
   document.addEventListener('show', (event) => {
     let page = event.target;
     const images = document.getElementById('images');
@@ -77,14 +82,14 @@
       };
 
       page.querySelector('#level2').onclick = function() {
-        t = 500;
+        t = 700;
         Initialization();
         document.querySelector('#navigator').pushPage('slide.html');
         console.log('level2');
       };
 
       page.querySelector('#level3').onclick = function() {
-        t = 100;
+        t = 500;
         Initialization();
         document.querySelector('#navigator').pushPage('slide.html');
         console.log('level3');
@@ -92,16 +97,56 @@
       };
 
       page.querySelector('#level4').onclick = function() {
-        t = 10;
+        t = 300;
         Initialization();
         document.querySelector('#navigator').pushPage('slide.html');
         console.log('level4');
       };
+
       page.querySelector('#random').onclick = function() {
         const levelNumber = Math.floor(Math.random() * 4 + 1);
         page.querySelector('#level' + String(levelNumber)).click();
       };
 
+      page.querySelector('#level1-ex').onclick = function() {
+        const modal = document.getElementById('dialog')
+        modal.show();
+        modal.querySelector('h1').textContent = 'Level 1';
+        modal.querySelector('p').textContent = '画像がゆっくり流れるよ！';
+      };
+
+      page.querySelector('#level2-ex').onclick = function() {
+        const modal = document.getElementById('dialog')
+        modal.show();
+        modal.querySelector('h1').textContent = 'Level 2';
+        modal.querySelector('p').textContent = 'Level1より早く画像が流れるよ！';
+      };
+
+      page.querySelector('#level3-ex').onclick = function() {
+        const modal = document.getElementById('dialog')
+        modal.show();
+        modal.querySelector('h1').textContent = 'Level 3';
+        modal.querySelector('p').textContent = 'Level2より早く画像が流れるよ！';
+      };
+
+      page.querySelector('#level4-ex').onclick = function() {
+        const modal = document.getElementById('dialog')
+        modal.show();
+        modal.querySelector('h1').textContent = 'Level 4';
+        modal.querySelector('p').textContent = 'Level3より早く画像が流れるよ！';
+      };
+
+      page.querySelector('#random-ex').onclick = function() {
+        const modal = document.getElementById('dialog')
+        modal.show();
+        modal.querySelector('h1').textContent = 'random';
+        modal.querySelector('p').textContent = 'レベルをランダムで決めるよ！';
+      };
+
+      const modal = document.querySelector('ons-modal');
+      modal.querySelector('#close').onclick = function() {
+        document.getElementById('dialog').hide();
+      };
 
 
     }else if(page.matches('#add-page')){

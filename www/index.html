@@ -13,7 +13,7 @@
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-  <ons-navigator id="navigator" page="levels.html"></ons-navigator>
+  <ons-navigator id="navigator" page="top.html"></ons-navigator>
 
   <ons-template id="top.html">
     <ons-page id="top-page">
@@ -48,24 +48,52 @@
         <div class="levels-btn">
           <div class="level">
             <ons-button modifier="outline" id="level1">Level1</ons-button>  
-            
+            <label for="level1-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="level1-ex"></button>  
+            </label>
           </div>
           <div class="level">
-            <ons-button modifier="outline" id="level2">Level2</ons-button>  
+            <ons-button modifier="outline" id="level2">Level2</ons-button>
+            <label for="level2-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="level2-ex"></button>  
+            </label>  
           </div>
           <div class="level">
-            <ons-button modifier="outline" id="level3">Level3</ons-button>  
+            <ons-button modifier="outline" id="level3">Level3</ons-button>
+            <label for="level3-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="level3-ex"></button>  
+            </label>   
           </div>
           <div class="level">
-            <ons-button modifier="outline" id="level4">Level4</ons-button>  
+            <ons-button modifier="outline" id="level4">Level4</ons-button> 
+            <label for="level4-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="level4-ex"></button>  
+            </label>
           </div>
           <div class="level">
-            <ons-button modifier="outline" id="random">random</ons-button>  
+            <ons-button modifier="outline" id="random">random</ons-button> 
+            <label for="random-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="random-ex"></button>  
+            </label>
           </div>
         </div>
       </div>
     </ons-page>
   </ons-template>
+  
+  <ons-modal id="dialog">
+    <div class="modal-container">
+      <h1></h1>
+      <p></p>
+      <ons-button  id="close">Close</ons-button>
+    </div>
+  </ons-modal>
+  
 
   <ons-template id="slide.html">
     <ons-page id="slide-page">
@@ -133,7 +161,7 @@
     <ons-page id="last-page">
       <ons-toolbar>
         <div class="left"><ons-button id="title" modifier="quiet"></ons-button></div>
-        <div class="center">記憶喚起</div>
+        <div class="center">結果</div>
       </ons-toolbar>
       <div class="background" style="background-color: honeydew;"></div>
       <div class="content">
@@ -150,7 +178,6 @@
         </div>
         <div class="btn">
           <ons-button modifier="outline" id="last">Play Again</ons-button>
-          <h1 id="retry">↑LET'S RETRY↑</h1>  
         </div>
       </div>
     </ons-page>
