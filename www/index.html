@@ -9,30 +9,74 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300" rel="stylesheet">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-  <ons-navigator id="navigator" page="top.html"></ons-navigator>
+  <ons-navigator id="navigator" page="levels.html"></ons-navigator>
 
   <ons-template id="top.html">
     <ons-page id="top-page">
+      <ons-toolbar>
+        <div class="center">Title</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: honeydew;"></div>
       <div class="content">
+        <h1 id="title">Title</h1>
         <div class="images-container">
-          <ul class="images">
+          <h2 id="memory-list">画像一覧</h2>
+          <ul id="images">
           </ul>
         </div>
         <div class="btn_content">
-          <ons-button modifier="outline" id="btn">Start</ons-button>  
+          <ons-button modifier="outline" id="start">Start</ons-button>  
           <ons-button modifier="outline" id="add">Add</ons-button>  
         </div>  
       </div>
     </ons-page>
   </ons-template>
 
+  <ons-template id="levels.html">
+    <ons-page id="levels-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">レベル選択</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: honeydew;"></div>
+      <div class="content">
+        <h1 id="what">select level</h1>
+        <div class="levels-btn">
+          <div class="level">
+            <ons-button modifier="outline" id="level1">Level1</ons-button>  
+            
+          </div>
+          <div class="level">
+            <ons-button modifier="outline" id="level2">Level2</ons-button>  
+          </div>
+          <div class="level">
+            <ons-button modifier="outline" id="level3">Level3</ons-button>  
+          </div>
+          <div class="level">
+            <ons-button modifier="outline" id="level4">Level4</ons-button>  
+          </div>
+          <div class="level">
+            <ons-button modifier="outline" id="random">random</ons-button>  
+          </div>
+        </div>
+      </div>
+    </ons-page>
+  </ons-template>
+
   <ons-template id="slide.html">
     <ons-page id="slide-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">記憶中。。。</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: honeydew;"></div>
       <div class="content">
         <div class="slide-image">
+          <h1>順番を覚えてね</h1>
           <img id="main">
         </div>
       </div>
@@ -41,9 +85,21 @@
 
   <ons-template id="add.html">
     <ons-page id="add-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">画像追加</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: honeydew;"></div>
       <div class="content">
-        <div class="slide-image">
-          hello
+        <div class="add-image">
+          <label for="file">
+            画像を選択
+            <input id="file" type="file" modifier="underbar"></input>
+          </label>
+          <div class="preview">
+            <img id="add-image">
+          </div>
+          <ons-input id="image-name" modifier="underbar" placeholder="画像の名前"></ons-input>
         </div>
         <div class="pop-btn">
           <ons-button modifier="outline" id="plus">＋</ons-button>
@@ -51,16 +107,23 @@
       </div>
     </ons-page>
   </ons-template>
-    
+   
   <ons-template id="select.html">
     <ons-page id="select-page">
+      <div class="background" style="background-color: honeydew;"></div>
+      <ons-toolbar>
+        <div class="left"><ons-button id="stop" modifier="quiet">やめた！</ons-button></div>
+        <div class="center">記憶喚起</div>
+      </ons-toolbar>
       <div class="content">
-        <div class="name">
-         <ul class="select">
+        <div class="select-name">
+          <h1>Select Name</h1>
+          <p>覚えた順に名前をタップ！</p>
+          <ul class="select">
         </div>
         <div class="btns">
-          <button modifier="material" id="reset">Reset</button>
-          <button modifier="material" id="check" class="cannot">Check</button>
+          <ons-button modifier="outline" id="reset">Reset</ons-button>
+          <ons-button modifier="outline" id="check" class="cannot">Check</ons-button>
         </div>
       </div>
     </ons-page>
@@ -68,21 +131,26 @@
 
   <ons-template id="last.html">
     <ons-page id="last-page">
+      <ons-toolbar>
+        <div class="left"><ons-button id="title" modifier="quiet"></ons-button></div>
+        <div class="center">記憶喚起</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: honeydew;"></div>
       <div class="content">
         <div class="judge">
           <p id="judge"></p>
         </div>
         <div class="answer">
-          <h1>Answer</h1>
+          <h1 style="font-family: 'Alegreya Sans SC'">Answer</h1>
           <ul id="answer"></ul>
         </div>
-        
-        <div class="my-answer">
-          <h1>My Answer</h1>
-          <ul id="my-answer"></ul>
+        <div class="your-answer">
+          <h1 style="font-family: 'Alegreya Sans SC'">Your Answer</h1>
+          <ul id="your-answer"></ul>
         </div>
         <div class="btn">
-          <ons-button modifier="outline" id="last">Top</ons-button>  
+          <ons-button modifier="outline" id="last">Play Again</ons-button>
+          <h1 id="retry">↑LET'S RETRY↑</h1>  
         </div>
       </div>
     </ons-page>
