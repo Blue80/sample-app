@@ -16,10 +16,17 @@
       {img: "image/pic06.png", name: "画像6"},
       {img: "image/pic07.png", name: "画像7"},
     ];
-  
-  
-  
 
+    let selectImages = [
+      {img: 'image/pic00.png', name: "青"},
+      {img: "image/pic01.png", name: "水色"},
+      {img: "image/pic02.png", name: "エメラルド"},
+      {img: "image/pic03.png", name: "緑"},
+      {img: "image/pic04.png", name: "黄緑"},
+      {img: "image/pic05.png", name: "黄色"},
+      {img: "image/pic06.png", name: "オレンジ"},
+      {img: "image/pic07.png", name: "赤"},
+    ];
 
   document.addEventListener('show', (event) => {
     let page = event.target;
@@ -73,33 +80,28 @@
     let page = event.target;
     
     if(page.matches('#levels-page')){
-      
+
       page.querySelector('#level1').onclick = function() {
-        t = 1000;
+        t = 100;
         Initialization();
-        document.querySelector('#navigator').pushPage('slide.html');
         console.log('level1');
       };
 
       page.querySelector('#level2').onclick = function() {
         t = 700;
         Initialization();
-        document.querySelector('#navigator').pushPage('slide.html');
         console.log('level2');
       };
 
       page.querySelector('#level3').onclick = function() {
         t = 500;
         Initialization();
-        document.querySelector('#navigator').pushPage('slide.html');
         console.log('level3');
-
       };
 
       page.querySelector('#level4').onclick = function() {
         t = 300;
         Initialization();
-        document.querySelector('#navigator').pushPage('slide.html');
         console.log('level4');
       };
 
@@ -109,38 +111,23 @@
       };
 
       page.querySelector('#level1-ex').onclick = function() {
-        const modal = document.getElementById('dialog')
-        modal.show();
-        modal.querySelector('h1').textContent = 'Level 1';
-        modal.querySelector('p').textContent = '画像がゆっくり流れるよ！';
+        setExplain('Level 1', '画像がゆっくり流れるよ！');
       };
 
       page.querySelector('#level2-ex').onclick = function() {
-        const modal = document.getElementById('dialog')
-        modal.show();
-        modal.querySelector('h1').textContent = 'Level 2';
-        modal.querySelector('p').textContent = 'Level1より早く画像が流れるよ！';
+        setExplain('Level 2', 'Level1より早く画像が流れるよ！');
       };
 
       page.querySelector('#level3-ex').onclick = function() {
-        const modal = document.getElementById('dialog')
-        modal.show();
-        modal.querySelector('h1').textContent = 'Level 3';
-        modal.querySelector('p').textContent = 'Level2より早く画像が流れるよ！';
+        setExplain('Level 3', 'Level2より早く画像が流れるよ！');
       };
 
       page.querySelector('#level4-ex').onclick = function() {
-        const modal = document.getElementById('dialog')
-        modal.show();
-        modal.querySelector('h1').textContent = 'Level 4';
-        modal.querySelector('p').textContent = 'Level3より早く画像が流れるよ！';
+        setExplain('Level 4', 'Level3より早く画像が流れるよ！');
       };
 
       page.querySelector('#random-ex').onclick = function() {
-        const modal = document.getElementById('dialog')
-        modal.show();
-        modal.querySelector('h1').textContent = 'random';
-        modal.querySelector('p').textContent = 'レベルをランダムで決めるよ！';
+        setExplain('random', 'レベルをランダムで決めるよ！');
       };
 
       const modal = document.querySelector('ons-modal');
@@ -154,6 +141,39 @@
       const imageName = document.getElementById('image-name');
       const addImage = document.getElementById('add-image');
       let imageFileName;
+      const defaultImages = document.getElementById('dafault-images');
+
+      selectImages.forEach((selectImage) => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        const p = document.createElement('p');
+        img.src = selectImage.img;
+        p.textContent = selectImage.name;
+        li.appendChild(img);       
+        li.appendChild(p);
+        const btn = document.createElement('ons-button');
+        btn.textContent = 'add';
+        li.classList.add('all');
+        li.appendChild(btn);
+        defaultImages.appendChild(li);
+        
+        btn.onclick = function() {
+          if(btn.classList.contains('added')){
+            btn.classList.remove('added');
+            for(let i = 0; i < colors.length; i++){
+              if(p.textContent === colors[i].name){
+                colors.splice(i, 1);
+              }
+            }
+            console.log(colors);
+          } else {
+            colors.push({img: selectImage.img, name: selectImage.name});
+            btn.classList.add('added');
+            btn.textContent = ''
+            console.log(colors);
+          }
+        }
+      });
 
       file.addEventListener('change', (e) => {
         console.log(e.target.files);
@@ -166,13 +186,16 @@
         }
       }, false);
 
+      
       page.querySelector('#plus').onclick = function() {
         if(file.value === '' || imageName.value === '' ){
           return;
         }
         colors.push({img: imageFileName, name: imageName.value});
+        addImage.src = '';
+        imageName.value = '';
         console.log(colors);
-        document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
+        // document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
       }
 
 
@@ -183,9 +206,8 @@
       shuffleimages = [...shuffles];
       console.log(shuffleimages);
       const main = document.getElementById('main');
-      main.src = shuffleimages[currentIndex].img;
       play();
-      if(currentIndex == shuffleimages.length - 1){
+      if(currentIndex ==- shuffleimages.length){
         clearTimeout(timeoutId);
       }
 
@@ -268,26 +290,38 @@
     }  
   });
 
+  function setExplain(level, text){
+    const modal = document.getElementById('dialog')
+    modal.show();
+    modal.querySelector('h1').textContent = level;
+    modal.querySelector('p').textContent = text;
+  }
+
   function Initialization(){
     currentIndex = 0;
     tapCount = 0;
     lists.splice(0);
     selectNames.splice(0);
+    document.querySelector('#navigator').pushPage('slide.html');
   }
 
   let timeoutId;
   function play(){
-    if(currentIndex == shuffleimages.length - 1){
+    if(currentIndex === shuffleimages.length){
       setTimeout(() => {
         document.querySelector('#navigator').pushPage('select.html');
       }, t);
       return;
     }
     timeoutId = setTimeout(() => {
+      const main = document.getElementById('main');
       main.src = shuffleimages[currentIndex].img;
+      console.log(main.src);
+      console.log(currentIndex);
+      currentIndex++;
       play();
     }, t);
-    currentIndex++;
+    // currentIndex++;
   }
 
 
@@ -304,7 +338,6 @@
   
   let shuffles = [];
   let shuffleimages = [];
-
 
   let selectNames = [];
   let lists = [];
