@@ -18,35 +18,168 @@
   <ons-template id="top.html">
     <ons-page id="top-page">
       <ons-toolbar>
-        <div class="center">Title</div>
+        <div class="center">記憶力あげよう</div>
       </ons-toolbar>
-      <div class="background" style="background-color: honeydew;"></div>
+      <div class="background" style="background-color: ivory;"></div>
       <div class="content">
-        <h1 id="title">Title</h1>
-        <div class="images-container">
-          <h2 id="memory-list">画像一覧</h2>
-          <ul id="images">
-          </ul>
+        <div class="title">
+          <div class="title-left">
+            <h1 id="title1">脳</h1>
+          </div>
+          <div class="title-right">
+            <p id="p1">を鍛える</p>
+            <p id="p2">大人の</p>
+          </div>
+          <div class="title-center">
+            <p id="p3">NINTENDO SWITCH</p>
+          </div>
+        </div>
+        <div class="top-image">
+          <p id="p5">今の脳年齢を<br>測ってみませんか?(嘘)</p>
+          <!-- <img src="image/kawashima.png"> -->
         </div>
         <div class="btn_content">
-          <ons-button modifier="outline" id="start">Start</ons-button>  
-          <ons-button modifier="outline" id="add">Add</ons-button>  
-        </div>  
+          <ons-button modifier="outline" id="start">Start</ons-button>    
+          <ons-button modifier="outline" id="How">How to...</ons-button>  
+        </div>
       </div>
     </ons-page>
   </ons-template>
+
+
+  <ons-modal id="method1" animation="fade">
+    <div class="explain-container">
+      <h1>遊び方①</h1>
+      <div id="sentence">
+        <p>ジャンルを選びます</p>
+      </div>
+      <div class="buttons">
+        <ons-button modifier="outline" id="close-modal1">×</ons-button>
+        <ons-button modifier="outline"  id="next-modal1">next</ons-button>
+      </div>
+    </div>
+  </ons-modal>
+
+  <ons-modal id="method2" animation="fade" cancelable>
+    <div class="explain-container">
+      <h1>遊び方②</h1> 
+      <div id="sentence">
+        <p>覚える画像とレベルを選びます</p>
+      </div> 
+      <div class="buttons">
+        <ons-button modifier="outline" id="close-modal2">×</ons-button>
+        <ons-button modifier="outline"  id="return-modal2">return</ons-button>
+        <ons-button modifier="outline"  id="next-modal2">next</ons-button>  
+      </div>
+    </div>
+  </ons-modal>
+
+  <ons-modal id="method3" animation="fade" cancelable>
+    <div class="modal-content">
+      <div class="explain-container">
+        <h1>遊び方③</h1>  
+        <div id="sentence">
+          <p>流れる画像の順番を覚えます</p>
+        </div>
+        <div class="buttons">
+          <ons-button modifier="outline" id="close-modal3">×</ons-button>
+          <ons-button modifier="outline"  id="return-modal3">return</ons-button>
+          <ons-button modifier="outline"  id="next-modal3">next</ons-button>  
+        </div>
+      </div>
+    </div>
+  </ons-modal>
+
+  <ons-modal id="method4" animation="fade">
+    <div class="explain-container">
+      <h1>遊び方④</h1>
+      <div id="sentence">
+        <p>覚えた順番に名前をタップします</p>
+      </div>
+      <div class="buttons">
+        <ons-button modifier="outline"  id="return-modal4">return</ons-button>
+        <ons-button modifier="outline" id="close-modal4">close</ons-button>
+      </div>
+    </div>
+  </ons-modal>
+
+
+  <ons-template id="genre.html">
+    <ons-page id="genre-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">ジャンルを選択</div>
+      </ons-toolbar>
+      <div class="background" style="background-color: ivory;"></div>
+      <div class="content">
+        <h1 id="what">select genre</h1>
+        <div class="genre-button">
+          <div class="genre">
+            <ons-button modifier="outline" id="colors">Colors</ons-button>  
+          </div>
+          <div class="genre">
+            <ons-button modifier="outline" id="characters">Characters</ons-button>  
+          </div>
+          <div class="genre">
+            <ons-button modifier="outline" id="animals">Animals</ons-button>  
+          </div>
+          <div class="genre">
+            <ons-button modifier="outline" id="jhonnys">J</ons-button>  
+          </div>
+          <div class="genre">
+            <ons-button modifier="outline" id="various">???</ons-button>  
+          </div>
+        </div>
+      </div>
+    </ons-page>
+  </ons-template>
+
 
   <ons-template id="levels.html">
     <ons-page id="levels-page">
       <ons-toolbar>
         <div class="left"><ons-back-button>戻る</ons-back-button></div>
-        <div class="center">レベル選択</div>
+        <div class="center">画像とレベルの選択</div>
+        <div class="right"><ons-button class="home" modifier="quiet">Top画面</ons-button></div>
       </ons-toolbar>
-      <div class="background" style="background-color: honeydew;"></div>
+      <div class="background" style="background-color: ivory;"></div>
       <div class="content">
-        <h1 id="what">select level</h1>
+        <h1 id="what">Select</h1>
+        <div class="start">
+          <div class="level">
+            <ons-button  id="go">Start</ons-button> 
+            <label for="go-ex">
+              <img src="image/question.png">
+              <button modifier="outline" id="go-ex"></button>  
+            </label>
+          </div>
+        </div>
+        <div class="images-container">
+          <h2 id="image-list">画像を表示する</h2>
+          <div id="box">
+            <ul id="images">
+            </ul>
+            <ons-button id="close-message">画像を非表示にする</ons-button>
+          </div>
+        </div>
+        <div class="add-image">
+          <div class="my-folder">
+            <label for="file">
+              自分のフォルダから写真を追加
+              <input id="file" type="file" modifier="underbar"></input>
+            </label>
+            <div class="preview">
+              <img id="add-image">
+            </div>
+            <ons-input id="image-name" modifier="underbar" placeholder="画像の名前"></ons-input>
+          </div>
+          <div class="pop-btn">
+            <ons-button modifier="outline" id="plus">＋</ons-button>
+          </div>
+        </div>
         <div class="levels-btn">
           <div class="level">
+            <h2 id="memory-list">レベルを選択する</h2>
             <ons-button modifier="outline" id="level1">Level1</ons-button>  
             <label for="level1-ex">
               <img src="image/question.png">
@@ -82,6 +215,8 @@
             </label>
           </div>
         </div>
+        
+        </div> 
       </div>
     </ons-page>
   </ons-template>
@@ -90,18 +225,18 @@
     <div class="modal-container">
       <h1></h1>
       <p></p>
-      <ons-button  id="close">Close</ons-button>
+      <ons-button  class="close">Close</ons-button>
     </div>
   </ons-modal>
-  
+
 
   <ons-template id="slide.html">
     <ons-page id="slide-page">
       <ons-toolbar>
-        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="left"><ons-button class="home" modifier="quiet">やめた！</ons-button></div>
         <div class="center">記憶中。。。</div>
       </ons-toolbar>
-      <div class="background" style="background-color: honeydew;"></div>
+      <div class="background" style="background-color: ivory;"></div>
       <div class="content">
         <div class="slide-image">
           <h1>順番を覚えてね</h1>
@@ -110,49 +245,18 @@
       </div>
     </ons-page>
   </ons-template>
-
-  <ons-template id="add.html">
-    <ons-page id="add-page">
-      <ons-toolbar>
-        <div class="left"><ons-back-button>戻る</ons-back-button></div>
-        <div class="center">画像追加</div>
-      </ons-toolbar>
-      <div class="background" style="background-color: honeydew;"></div>
-      <div class="content">
-        <div class="add-image">
-          <div class="default-image">
-            <ul id="dafault-images">
-            </ul>
-          </div>
-          <div class="my-folder">
-            <label for="file">
-              自分のフォルダから写真を追加
-              <input id="file" type="file" modifier="underbar"></input>
-            </label>
-            <div class="preview">
-              <img id="add-image">
-            </div>
-            <ons-input id="image-name" modifier="underbar" placeholder="画像の名前"></ons-input>
-          </div>
-        </div>
-        <div class="pop-btn">
-          <ons-button modifier="outline" id="plus">＋</ons-button>
-        </div>
-      </div>
-    </ons-page>
-  </ons-template>
    
   <ons-template id="select.html">
     <ons-page id="select-page">
-      <div class="background" style="background-color: honeydew;"></div>
+      <div class="background" style="background-color: ivory;"></div>
       <ons-toolbar>
-        <div class="left"><ons-button id="stop" modifier="quiet">やめた！</ons-button></div>
-        <div class="center">記憶喚起</div>
+        <div class="left"><ons-button class="home" modifier="quiet">やめた！</ons-button></div>
+        <div class="center">思い出そう</div>
       </ons-toolbar>
       <div class="content">
         <div class="select-name">
-          <h1>Select Name</h1>
-          <p>覚えた順に名前をタップ！</p>
+          <h1 id="select-title">Select Name</h1>
+          <p id="select-sentence">覚えた順に名前をタップ！</p>
           <ul class="select">
         </div>
         <div class="btns">
@@ -169,10 +273,14 @@
         <div class="left"><ons-button id="title" modifier="quiet"></ons-button></div>
         <div class="center">結果</div>
       </ons-toolbar>
-      <div class="background" style="background-color: honeydew;"></div>
+      <div class="background" style="background-color: ivory;"></div>
       <div class="content">
         <div class="judge">
           <p id="judge"></p>
+        </div>
+        <div class="btn">
+          <ons-button modifier="outline" id="again">Play Again</ons-button>
+          <ons-button modifier="outline" id="last">TOP</ons-button>
         </div>
         <div class="answer">
           <h1 style="font-family: 'Alegreya Sans SC'">Answer</h1>
@@ -181,9 +289,6 @@
         <div class="your-answer">
           <h1 style="font-family: 'Alegreya Sans SC'">Your Answer</h1>
           <ul id="your-answer"></ul>
-        </div>
-        <div class="btn">
-          <ons-button modifier="outline" id="last">Play Again</ons-button>
         </div>
       </div>
     </ons-page>
