@@ -75,7 +75,7 @@
     
    if(page.matches('#levels-page')){
     page.querySelector('.home').onclick = function() {
-      document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
+      document.querySelector('#navigator').resetToPage('top.html');
     };
 
     page.querySelector('#go').onclick = function() {
@@ -85,10 +85,6 @@
       t = 1000;
       Initialization();
       console.log('level1');
-    };
-
-    page.querySelector('#go-ex').onclick = function() {
-      setExplain('とりあえず始める', '設定が面倒な人は "Start" ボタンをタップしてね！');
     };
     
 
@@ -160,7 +156,6 @@
         body.appendChild(onsModal);
 
         img.onclick = function() {
-          console.log(onsModal);
           onsModal.show();
         }
 
@@ -192,6 +187,15 @@
       console.log(games); 
       
     }else{
+      if(games.length === 0){
+        console.log('make games[]');
+        lengthNumber = Math.floor(Math.random() * 3 + 5);
+        various = shuffle([...colors]);
+        for(let i = 0; i < lengthNumber; i++){
+          games.push(various[i]);
+          console.log(games[i]);
+        }
+      }
       console.log('number is 1');
       h2.textContent = '何が出るかな';
     }
@@ -294,9 +298,10 @@
         if(games.length === 0){
           return;
         }
-        // const levelNumber = Math.floor(Math.random() * 4 + 1);
-        // page.querySelector('#level' + String(levelNumber)).click();
-        page.querySelector('#level4').click();
+        let time = [1000, 700, 500, 300, 200];
+        t = time[Math.floor(Math.random()*5)];
+        Initialization();
+        console.log('高速');
       };
 
       page.querySelector('#level1-ex').onclick = function() {
@@ -343,7 +348,7 @@
       const method3 = document.getElementById('method3');
       const method4 = document.getElementById('method4');
 
-      page.querySelector('#How').onclick = function() {
+      page.querySelector('#how').onclick = function() {
         method1.show();
       };
       
@@ -395,8 +400,6 @@
       };
 
     }else if(page.matches('#genre-page')){
-      console.log(games);
-
       page.querySelector('#colors').onclick = function() {
         colors = rainbow;
         gameSet(colors);
@@ -427,7 +430,8 @@
     
     }else if(page.matches('#slide-page')){
       page.querySelector('.home').onclick = function() {
-        document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
+        clearTimeout(timeoutId);
+        document.querySelector('#navigator').resetToPage('top.html');
       };
 
       shuffles = shuffle([...games]);
@@ -446,7 +450,7 @@
       setName();
 
       page.querySelector('.home').onclick = function() {
-        document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});
+        document.querySelector('#navigator').resetToPage('top.html');
       };
 
       page.querySelector('#reset').onclick = function() {
@@ -468,7 +472,7 @@
         if(tapCount !== games.length){
           return;
         }
-        document.querySelector('#navigator').pushPage('last' + '.html');
+        document.querySelector('#navigator').pushPage('last.html');
       };
 
     }else if(page.matches('#last-page')){
@@ -476,9 +480,11 @@
       for(let i = 0; i < shuffleimages.length; i++){
         if(shuffleimages[i].name !== selectNames[i].name){
           p.textContent = "残念";
+          p.style.fontFamily = 'Kaisho';
           break;
         }else{
           p.textContent = "完璧";
+          p.style.fontFamily = 'Dakuten';
         }
       }
 
@@ -511,11 +517,15 @@
       });
 
       page.querySelector('#last').onclick = function() {
-        document.querySelector('#navigator').resetToPage('top.html', {animation: "default"});    
+        document.querySelector('#navigator').resetToPage('top.html');    
       };
 
       page.querySelector('#again').onclick = function() {
-        document.querySelector('#navigator').resetToPage('levels.html', {animation: "default"});    
+        document.querySelector('#navigator').resetToPage('levels.html', {animation: "default"}); 
+        if(number === 1){
+          games = [];
+          console.log('reset games[]' + games);
+        }   
       };
 
     }  
@@ -540,6 +550,7 @@
     document.querySelector('#navigator').pushPage('levels.html');
     games = [];
     number = 0;
+    console.log(games);
     lengthNumber = Math.floor(Math.random() * 3 + 5);
     various = shuffle([...colors]);
     for(let i = 0; i < lengthNumber; i++){
@@ -559,7 +570,7 @@
     timeoutId = setTimeout(() => {
       const main = document.getElementById('main');
       main.src = shuffleimages[currentIndex].img;
-      console.log(shuffleimages[currentIndex].name);
+      console.log(currentIndex + ' ' + shuffleimages[currentIndex].name);
       currentIndex++;
       play();
     }, t);
@@ -591,7 +602,7 @@
         if(li.classList.contains('tapped')){
           return;
         }
-        console.log(game.name);
+        // console.log(game.name);
         tapCount++;
         li.classList.add('tapped');
         li.textContent = tapCount;

@@ -4,6 +4,34 @@ body {
     
 }
 
+@font-face {
+	font-family: 'title';
+  src: url(../font/shipporisans/ShipporiSans-W6.otf);
+
+}
+@font-face {
+	font-family: 'nasu';
+  src: url(../font/NasuFont20200227/NasuM-Regular-20200227.ttf);
+}
+
+@font-face {
+	font-family: 'Genei';
+  src: url(../font/GenEiChikuMin_v2.1/GenEiChikugoMin2-R.ttf);
+}
+
+@font-face {
+	font-family: 'Dakuten';
+  src: url(../font/NeoDakutenMincho/NeoDakutenMincho20181122001.ttf);
+}
+
+@font-face {
+	font-family: 'Kaisho';
+  src: url(../font/g_pencilkaisho_free_011_20171223/g_pencilkaisho_free.ttf);
+}
+
+
+
+
 ons-toolbar {
   font-family: 'Alegreya Sans SC', sans-serif;
 }
@@ -15,49 +43,57 @@ ons-toolbar {
 
 
 .title {
-  height: 250px;
-  /* background: hotpink; */
-}
-
-.title-left {
-  /* background: lawngreen; */
-  width: 45%;
-  height: 150px;
-  float: left;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #title1 {
-   text-align: right;
-   font-size: 135px;
-   font-family: 'Alegreya Sans SC', sans-serif;
-   margin: 0;
-   /* vertical-align: text-top; */
-}
-
-.title-right {
-  /* background: lightsteelblue; */
-  width: 50%;
-  height: 150px;
-  float: left;
-  text-align: left;
-  font-size: 40px;
-}
-
-.title-right > p {
-  padding-left: 5px;
-}
-
-#p1 {
+  text-align: center;
+  font-size: 90px;
+  font-family: 'title';
   margin: 0;
-  margin-top: 40px;
-  font-weight: bold;
+  padding-top: 30px;
+  line-height: 110px;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out 0.5s forwards;
 }
 
-#p2 {
-  margin: 0;
-  font-size: 50px;
-  line-height: 50px;
-  letter-spacing: 5px;
+
+#title1 span {
+  display: inline-block;
+}
+
+#title1 span:nth-child(1) {
+  animation: textAnime 0.6s ease-in-out 0.5s forwards;
+}
+
+#title1 span:nth-child(2) {
+  animation: textAnime 0.6s ease-in-out 0.6s forwards;
+}
+
+#title1 span:nth-child(3) {
+  animation: textAnime 0.6s ease-in-out 0.7s forwards;
+}
+
+#title1 span:nth-child(4) {
+  animation: textAnime 0.6s ease-in-out 0.8s forwards;
+}
+
+
+@keyframes textAnime {
+    0% {
+      transform: translateY(0);
+  }
+  25%{
+      transform: translateY(-30%);
+  }
+  75% {
+      transform: translateY(30%);
+  }
+  100%{
+      transform: translateY(0);
+  }
 }
 
 .title-center {
@@ -67,42 +103,31 @@ ons-toolbar {
   padding-top: 4px;
 }
 
-#p3 {
-  margin: 0 auto;
-  padding: 3px;
-  width: 300px;
-  height: 30px;
-  font-size: 23px;
-  font-weight: bold;
-  letter-spacing: 5px;
-  background: red;
-  color: white;
-  border-radius: 4px;
-}
-
-#span3 {
-  font-size: 10px;
-}
-
 .top-image {
+  opacity: 0;
   text-align: center;
+  display: flex;
+  animation: 2s 0.5s fadeIn forwards;
+  margin-top: 20px;
+  justify-content: center;
 }
+
 
 #p5 {
-  width: 350px;
   background: red;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  font-family: 'Yu Gothic';
-  padding: 4px;
-  margin: 30px auto ;
-  border-radius: 4px;
+  font-family: 'nasu';
+  padding-top: 15px;
+  margin: 40px 0 0 20px;
+  border-radius: 5px;
+  width: 210px;
+  height: 90px;
 }
 
-
 .images-container {
-  background: rgba(255, 218, 185, 0.5);
+  background: rgba(144, 238, 144, 0.2);
   margin: 0 auto;
   padding: 5px;
   border-radius: 10px;
@@ -111,8 +136,8 @@ ons-toolbar {
 
 #image-list, #memory-list {
   text-align: center;
-  font-size: 20px;
-  font-family: 'Yu Gothic';
+  font-size: 27px;
+  font-family: 'Genei';
 }
 
 #image-list{
@@ -206,8 +231,11 @@ ul {
 }
 
 #start {
-  color: coral;
-  border-color: coral;
+  background: coral;
+}
+
+#how {
+  background: royalblue;
 }
 
 
@@ -215,7 +243,7 @@ ul {
   margin-top: 50px;
   text-align: center;
   font-size: 50px;
-  background-color: rgba(255, 218, 185, 0.5);
+  background-color: rgba(144, 238, 144, 0.3);
   border-radius: 10px;
 }
 
@@ -262,10 +290,12 @@ label:active {
 
 /* how-to */
 .explain-container {
-  background: rgba(152, 251, 152, 0.8);
+  background: rgba(152, 251, 152, 0.9);
+  width: 380px;
   height: 270px;
   font-size: 24px;
   font-family: 'Yu Gothic';
+  margin: 0 auto;
 }
 
 .explain-container > h1{
@@ -273,15 +303,18 @@ label:active {
   padding-top: 10px;
 }
 
-#sentence > p {
-  font-size: 24px;
-  margin: 0;
-}
 
-#sentence {
+
+.sentence {
   height: 100px;
   line-height: 100px;
   margin-top: 20px;
+}
+
+.sentence > p {
+  font-size: 24px;
+  font-family: 'Dakuten';
+  margin: 0;
 }
 
 .buttons {
@@ -312,17 +345,20 @@ label:active {
 }
 
 .genre > ons-button {
-  width: 170px;
+  width: 200px;
   text-align: center;
-  font-size: 28px;
+  font-size: 30px;
   font-family: 'Alegreya Sans SC';
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 /* levels.html */
 .start {
   text-align: center;
-  margin: 20px;
-  padding: 30px;
+  padding-top: 50px;
+  font-family: 'Dakuten';
+  font-size: 18px;
 }
 
 #go {
@@ -376,11 +412,21 @@ ons-button.close {
   font-size: 50px;
   font-family: 'Alegreya Sans SC', sans-serif;
   background: linear-gradient(transparent 60%, lightseagreen 90%);
-  margin: 30px;
+  margin: 30px auto;
+  width: 270px;
+}
+
+#what2 {
+  width: 170px;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  background: linear-gradient(transparent 60%, lightseagreen 90%);
+  margin: 30px auto;
 }
 
 .levels-btn {
-  background: rgba(255, 218, 185, 0.5);
+  background: rgba(144, 238, 144, 0.3);
   border-radius: 10px;
   display: grid;
   gap: 40px;
@@ -394,7 +440,9 @@ ons-button.close {
   width: 150px;
   font-size: 24px;
   font-family: 'Alegreya Sans SC', sans-serif;
+  font-weight: bold;
   margin-right: 10px;
+  border-radius: 10px;
 }
 
 button {
@@ -403,7 +451,7 @@ button {
 
 #level1, #colors {
   color: royalblue;
-  border: 1px solid royalblue;
+  border: 3px solid royalblue;
 }
 
 #level1-ex {
@@ -413,7 +461,7 @@ button {
 
 #level2, #characters {
   color: red;
-  border: 1px solid red;
+  border: 3px solid red;
 }
 
 #level2-ex {
@@ -423,7 +471,7 @@ button {
 
 #level3, #animals {
   color: limegreen;
-  border: 1px solid limegreen;
+  border: 3px solid limegreen;
 }
 
 #level3-ex {
@@ -433,7 +481,7 @@ button {
 
 #level4, #jhonnys {
   color: gold;
-  border: 1px solid gold;
+  border: 3px solid gold;
 }
 
 #level4-ex {
@@ -443,7 +491,7 @@ button {
 
 #random, #various {
   color: mediumorchid;
-  border: 1px solid mediumorchid;
+  border: 3px solid mediumorchid;
 }
 
 #random-ex {
@@ -453,7 +501,7 @@ button {
 
 label {
   padding: 10px;
-  border: 1px solid steelblue;
+  border: 3px solid steelblue;
 }
 
 label > img {
@@ -494,8 +542,13 @@ label > img {
   height: 200px;
   text-align: center;
   margin-top: 100px; 
+  font-family: 'Dakuten';
 }
 
+#comment {
+  font-family: 'Genei';
+  font-size: 32px;
+}
 
 
 #main {
@@ -522,15 +575,16 @@ label > img {
   text-align: center;
   margin: 0;
   font-size: 24px;
-  font-family: 'Yu Gothic';
+  font-weight: bold;
+  font-family: 'Dakuten';
 }
 
 .select {
   margin: 0;
   padding: 20px 10px;
   display: grid;
-  grid-template-columns: repeat(2, 165px);
-  justify-content: space-between;
+  grid-template-columns: repeat(2, 175px);
+  justify-content: center;
   grid-row-gap: 30px;
 }
 
@@ -543,6 +597,7 @@ label > img {
   text-align: center;
   border-radius: 8px;
   border: 2px solid mediumslateblue;
+  margin: 0 auto;
 }
 
 .tapped {
@@ -550,8 +605,9 @@ label > img {
 }
 
 .btns {
+  width: 300px;
+  margin: 0 auto;
   display: flex;
-  gap: 30px;
   text-align: center;
   justify-content: space-between;
   padding: 20px;
@@ -560,7 +616,7 @@ label > img {
 
 #reset, #check {
   font-size: 30px;
-  width: 150px;
+  width: 120px;
   height: 50px;
   line-height: 40px;
   font-weight: bold;
@@ -569,12 +625,12 @@ label > img {
 
 #reset {
   color: tomato;
-  border: 1px solid tomato;
+  border: 2px solid tomato;
 }
 
 #check {
   color: steelblue;
-  border: 1px solid steelblue;
+  border: 2px solid steelblue;
 }
 
 
@@ -585,6 +641,13 @@ label > img {
 
 /* last.html */
 
+
+#answer-box1, #answer-box2 {
+  font-weight: bold;
+  font-family: 'Alegreya Sans SC';
+  font-size: 35px;
+}
+
 .judge {
   text-align: center;
   font-size: 100px;
@@ -593,7 +656,13 @@ label > img {
 #judge {
   opacity: 0;
   margin: 10px;
+  font-family: 'Kaisho';
+  font-weight: bold;
   animation: 1s 0.5s fadeIn forwards;
+}
+
+.perfect {
+  font-family: 'Dakuten';
 }
 
 @keyframes fadeIn {
@@ -602,9 +671,10 @@ label > img {
 }
 
 .answer, .your-answer{
+  width: 320px;
   background: rgba(255, 165, 0, 0.5);
   padding: 5px 20px 20px;
-  margin: 0 5px 30px;
+  margin: 0 auto 30px;
   text-align: center;
   border-radius: 30px;
   font-size: 30px;
@@ -642,27 +712,27 @@ label > img {
 
 #last, #again {
   width: 200px;
-  font-size: 24px;
+  font-size: 30px;
   font-family: 'Alegreya Sans SC', sans-serif;
   font-weight: bold;
   animation: blinkAnime 0.2s infinite alternate;
   color: mediumslateblue;
-  border: 1px solid mediumslateblue;
+  border: 3px solid mediumslateblue;
   margin-bottom: 20px;
 }
 
 #again {
   color: crimson;
-  border: 1px solid crimson;
+  border: 3px solid crimson;
   animation: blinkAnime2 0.2s infinite alternate;
 }
 
 @keyframes blinkAnime{
   0% {color: rgba(123, 104, 238, 1);}
-  100% {color: rgba(123, 104, 238, 0.5);}
+  100% {color: rgba(123, 104, 238, 0.3);}
 }
 
 @keyframes blinkAnime2{
   0% {color: rgba(220, 20, 60, 1);}
-  100% {color: rgba(220, 20, 60, 0.5);}
+  100% {color: rgba(220, 20, 60, 0.3);}
 }
