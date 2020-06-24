@@ -90,7 +90,8 @@
 
     const file = document.getElementById('file');
     const imageName = document.getElementById('image-name');
-    const addImage = document.getElementById('add-image');
+    const preview = document.querySelector('.preview');
+    const addImage = document.createElement('img');
     const h2 = document.getElementById('image-list');
     const box = document.getElementById('box');
     const b = document.querySelector('#close-message');
@@ -139,29 +140,7 @@
           }
         }
 
-        // modal
-        const onsModal = document.createElement('ons-modal')
-        const bigImg = document.createElement('img');
-        const container = document.createElement('div');
-        container.classList.add('modal_container');
-        bigImg.classList.add('layout');
-        bigImg.src = color.img;
-        const closeButton = document.createElement('ons-button');
-        closeButton.classList.add('close');
-        closeButton.textContent = 'Close';
-        container.appendChild(bigImg);
-        container.appendChild(closeButton);
-        onsModal.appendChild(container);
-        const body = document.querySelector('body')
-        body.appendChild(onsModal);
-
-        img.onclick = function() {
-          onsModal.show();
-        }
-
-        onsModal.querySelector('.close').onclick = function() {
-          onsModal.hide();
-        }
+        bigImage(color.img,  img);
   
         btn.onclick = function() {
           if(btn.classList.contains('added')){
@@ -184,7 +163,7 @@
         }
       });
   
-      console.log(games); 
+      console.log(games.length); 
       
     }else{
       if(games.length === 0){
@@ -200,7 +179,11 @@
       h2.textContent = '何が出るかな';
     }
 
+    
+
+    // File
     file.addEventListener('change', (e) => {
+      preview.appendChild(addImage);
       console.log(e.target.files);
       let imageFile = e.target.files;
       let reader = new FileReader();
@@ -218,10 +201,10 @@
       }
       colors.push({img: imageFileName, name: imageName.value});
       games.push({img: imageFileName, name: imageName.value});
-      addImage.src = '';
+      preview.removeChild(addImage);
       imageName.value = '';
-      console.log(colors);
-      console.log(games);
+      // console.log(colors);
+      // console.log(games);
 
       if(number === 0){
         const li = document.createElement('li');
@@ -247,14 +230,20 @@
                 games.splice(i, 1);
               }
             }
-            console.log(games);
+            // console.log(games.length);
           } else {
-            games.push({img: color.img, name: color.name});
+            for(let i = 0; i < colors.length; i++){
+              if(p.textContent === colors[i].name){
+                games.push({img: colors[i].img, name: colors[i].name});
+              }
+            }
             btn.classList.add('added');
             btn.textContent = '取り消す'
-            console.log(games);
+            // console.log(games.length);
           }
         }
+
+        bigImage(imageFileName, img);
       }
     }
 
@@ -402,21 +391,25 @@
     }else if(page.matches('#genre-page')){
       page.querySelector('#colors').onclick = function() {
         colors = rainbow;
+        console.log(colors);
         gameSet(colors);
       };
     
       page.querySelector('#characters').onclick = function() {
         colors = characters;
+        // console.log(colors);
         gameSet(colors);
       };
     
       page.querySelector('#animals').onclick = function() {
         colors = animals;
+        // console.log(colors);
         gameSet(colors);
       };
     
       page.querySelector('#jhonnys').onclick = function() {
         colors = johnnys;
+        // console.log(colors);
         gameSet(colors);
       };
     
@@ -424,6 +417,7 @@
         colors = rainbow.concat(characters);
         colors = colors.concat(animals);
         colors = colors.concat(johnnys);
+        // console.log(colors);
         gameSet(colors);
         number = 1;
       };
@@ -555,7 +549,33 @@
     various = shuffle([...colors]);
     for(let i = 0; i < lengthNumber; i++){
       games.push(various[i]);
-      console.log(various[i]);
+      // console.log(various[i]);
+    }
+  }
+
+
+  function bigImage(imgSrc, img){
+    const onsModal = document.createElement('ons-modal')
+    const bigImg = document.createElement('img');
+    const container = document.createElement('div');
+    container.classList.add('modal_container');
+    bigImg.classList.add('layout');
+    bigImg.src = imgSrc;
+    const closeButton = document.createElement('ons-button');
+    closeButton.classList.add('close');
+    closeButton.textContent = 'Close';
+    container.appendChild(bigImg);
+    container.appendChild(closeButton);
+    onsModal.appendChild(container);
+    const body = document.querySelector('body')
+    body.appendChild(onsModal);
+
+    img.onclick = function() {
+      onsModal.show();
+    }
+
+    onsModal.querySelector('.close').onclick = function() {
+      onsModal.hide();
     }
   }
 
