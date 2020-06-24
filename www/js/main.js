@@ -430,7 +430,7 @@
 
       shuffles = shuffle([...games]);
       shuffleimages = [...shuffles];
-      console.log(shuffleimages);
+      // console.log(shuffleimages);
       const main = document.getElementById('main');
       play();
       if(currentIndex === shuffleimages.length){
